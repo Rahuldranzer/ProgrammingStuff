@@ -6,12 +6,12 @@ int main() {
 	int i,j,key;
 	int n=14;
 	
-	for(i=1;i<n;++i)
+	for(i=1;i<n; i++)
 	{
-	    key = a[i];
-	    j=i-1;
+	    key = a[i];                                  //key is being shifted to the right
+	    j=i-1;                                       //to increase the sorted array length
 	    while(j>=0 && a[j]>key)
-	   {
+	   {                                             //swapping the greater entries to the right side
 	    a[j+1]=a[j];
 	    
 	    cout<<"swapped "<<a[j]<<" in "<<j+1<<endl;
@@ -19,7 +19,7 @@ int main() {
 	    
 	   }
 	   
-	   a[j+1] = key;
+	   a[j+1] = key;                                 //shifting lower value to its rightful position
 	   
 	   cout<<"value at "<<j+1<<"= "<<key<<endl;
 	}
