@@ -20,7 +20,7 @@ void Merge(int *a,int first, int mid_ind,int last)
         // }
         // iter++;
         
-        T1[iter++] = (a[i] < a[j]) ? a[i++] : a[j++];
+        T1[iter++] = (a[i] < a[j]) ? a[i++] : a[j++];                                      //equivalent to the above commented code
     
     while( i <= mid_ind) T1[iter++] = a[i++];
     
@@ -45,16 +45,14 @@ void MergeSort(int *a, int first, int last)
        cout<<"first,mid and last "<<first<<" "<<m<<" "<<last<<endl;
         
         Merge(a,first,m,last);
-        cout<<"first,mid and last while merging"<<first<<" "<<m<<" "<<last<<endl;
+        cout<<"first,mid and last thus merged"<<first<<" "<<m<<" "<<last<<endl;
     }
-    //cout<<"Merged done correct"<<endl;
 }
 
 void printsortedarr(int *a,int size)                                          //printing array
 {
     for(int i=0;i<size;i++)
-    cout<<a[i]<<"  ";
-    cout<<"did u get it"<<endl;
+      cout<<a[i]<<"  ";
     cout<<endl;
 }
 
