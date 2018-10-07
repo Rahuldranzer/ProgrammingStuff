@@ -60,9 +60,9 @@ int main() {
     int a[14]={25,23,11,-4,-10,-3,-9,-34,-56,-110,-111,-123,34,11};
     int size=14;
 	
-	printsortedarr(&a[0],size);
-	MergeSort(&a[0],0,size-1);
-	printsortedarr(&a[0],size);
+	printsortedarr(a,size);
+	MergeSort(a,0,size-1);
+	printsortedarr(a,size);
 	
 	return 0;
 }
