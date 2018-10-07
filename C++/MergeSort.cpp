@@ -12,55 +12,69 @@ void Merge(int *a,int first, int mid_ind,int last)
     
     for(int i=0; i<n1; i++)
     {
+        cout<<"value of first "<<first<<endl;
+        cout<<"a[first+i] value entered in temp "<<a[first+i]<<endl;
         T1[i] = a[first+i];
         cout<<"first temp array index "<<first+i<<endl;
     }
     
-    cout<<"first temp arr"<<endl;
-    for(int i=0;i<n1;i++)
-        cout<<T1[i]<<" ";
+    cout<<"first temp arr"<<endl;                                                                            //printing 1st temp array
+    for(int m=0;m<n1;m++)
+        cout<<T1[m]<<" ";
      cout<<endl;
     
     
-    for(int i=0; i<n2; i++)
+    for(int j=0; j<n2; j++)
     {
-        T2[i] = a[n1+i];
+        T2[j] = a[mid_ind+1+j];
     }
     
-    cout<<"second temp arr"<<endl;
-    for(int i=0;i<n2;i++)
-        cout<<T2[i]<<" ";
+    cout<<"second temp arr"<<endl;                                                                            //printing 2nd temp array
+    for(int p=0;p<n2;p++)
+        cout<<T2[p]<<" ";
      cout<<endl;
-  //  cout<<"engaged in merging"<<endl;
+  
     int i=0;
     int j=0;
     int k=first;
-    while(k<=last)
+   
+    while(i<n1 && j<n2)
     {
         if(T1[i]<=T2[j])
         {
+            cout<<"value of i in comparison "<<i<<endl;
             a[k] = T1[i];
             i++;
         }
         else
         {
+            cout<<"value of j in comparison "<<j<<endl;
+            
             a[k] = T2[j];
             j++;
         }
         k++;
+        cout<<"value of i,n1,j and n2 and k in comparison "<<i<<" "<<n1<<" "<<j<<" "<<n2<<" "<<k<<endl;
     }
     
     while(i<n1)
     {
-        a[++k] = T1[i];
+        cout<<"value of i,k going to be entered "<<i<<" "<<k<<endl;
+        a[k] = T1[i];
         i++;
+        k++;
     }
     
     while(j<n2)
     {
-        a[++k] = T2[j];
+        cout<<"value of j,k going to be entered "<<j<<" "<<k<<endl;
+        a[k] = T2[j];
         j++;
+        k++;
     }
+    
+    for(int p=0;p<k;p++)
+      cout<<"value "<<a[p]<<" in "<<p<<" index "<<endl;                                                     //printing the temp merged array
     
     delete[] T1;
     delete[] T2;
@@ -68,26 +82,26 @@ void Merge(int *a,int first, int mid_ind,int last)
 
 void MergeSort(int *a, int first, int last)
 {
+    cout<<"first and last in MergeSort "<<first<<" "<<last<<" "<<endl;
     if(first < last)
     {
         int m = (last+first)/2;
         
-        MergeSort(&a[first],first,m);
-        MergeSort(&a[m+1],m+1,last);
+        MergeSort(a,first,m);
+        MergeSort(a,m+1,last);
         
-      //  cout<<"first,mid and last "<<first<<" "<<m<<" "<<last<<endl;
+       cout<<"first,mid and last "<<first<<" "<<m<<" "<<last<<endl;
         
-        Merge(&a[first],first,m,last);
-      //  cout<<"first,mid and last after merging"<<first<<" "<<m<<" "<<last<<endl;
+        Merge(a,first,m,last);
+        cout<<"first,mid and last thus merged "<<first<<" "<<m<<" "<<last<<endl;
     }
-    //cout<<"Merged done correct"<<endl;
 }
 
-void printsortedarr(int *a,int size)                                          //printing array
+void printsortedarr(int *a,int size)                                                                          //printing array
 {
     for(int i=0;i<size;i++)
-    cout<<a[i]<<"  ";
-    cout<<"did u get it"<<endl;
+      cout<<a[i]<<"  ";
+    cout<<endl;
 }
 
 int main() {
@@ -95,10 +109,8 @@ int main() {
     int size=14;
 	
 	printsortedarr(&a[0],size);
-	cout<<endl;
-	MergeSort(&a[0],0,size-1);
-	cout<<"what are you doing "<<endl;
-	printsortedarr(&a[0],size);
+	MergeSort(a,0,size-1);
+	printsortedarr(a,size);
 	
 	return 0;
 }
