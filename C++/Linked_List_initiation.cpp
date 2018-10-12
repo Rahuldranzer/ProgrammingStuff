@@ -40,12 +40,13 @@ class linked_list
     void del(int n)
     {
         node *temp = NULL;
-        
+        bool found = false;
         
         while(head != NULL && head -> data == n){
             temp = head;
             head = head -> next;
             delete temp;
+            found = true;
         }
 
         if(head == NULL)
@@ -61,6 +62,7 @@ class linked_list
 
                 delete temp -> next;
                 temp -> next = succ;
+                found = true;
 
             }
             else
@@ -69,7 +71,10 @@ class linked_list
             }
         }
         
-        //cout<<"Number not present"<<endl;
+        if(found)
+        cout<<"Number deleted"<<endl;
+        else
+        cout<<"Number "<<n<<" not present "<<endl;
     } 
     
     void display()
@@ -100,17 +105,17 @@ class linked_list
 int main() {
 	
 	linked_list a;
+	a.insert(23);
 	a.insert(7);
-	a.insert(7);
-	a.insert(7);
-	a.insert(7);
-	a.insert(7);
-	a.insert(7);
-	a.insert(7);
+	a.insert(71);
+	a.insert(70);
+	a.insert(-7);
+	a.insert(8);
+	a.insert(97);
 	
 	a.display();
 	
-	a.del(7);
+	a.del(100);
 	
 	a.display();
 	return 0;
