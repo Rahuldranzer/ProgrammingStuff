@@ -81,37 +81,14 @@ class linked_list
     
     void mid_node()
     {
-        node *temp = NULL;
-        double counter =0;
+        node *fast = head, *slow = head;
+        while(fast != NULL && fast -> next != NULL)
+        {
+            fast = fast -> next -> next;                                                //using fast and slow iterators 
+            slow = slow -> next;                                                        // to find mid_node
+        }
         
-        for(temp = head; temp != NULL; temp = temp -> next)
-            counter++;
-            
-        cout<<"The number of entries in the list  "<<counter<<endl;
-        
-        temp = head;
-        if(counter ==0)
-        {
-            cout<<"The list is emppty "<<endl;
-            return;
-        }
-        else if (counter == 1)
-        {
-            cout<<"Only 1 entry in the list "<<temp -> data<<endl;
-            return;
-        }
-        else if (counter > 1)
-        {
-            counter = round(counter/2);
-            
-            while(counter > 1)
-            {
-                temp = temp -> next;
-                counter--;
-            }
-            
-            cout<<"The middle node entry is "<<temp -> data<<endl;
-        }
+        cout<<"The middle node is "<<slow -> data<<endl;                                //mid_node is the node next to 1/2
     }
     
     void display()
@@ -145,8 +122,6 @@ int main() {
 	a.insert(1);
 	a.insert(2);
 	a.insert(3);
-	a.insert(4);
-	a.insert(5);
 	a.display();
 	a.mid_node();
 	
