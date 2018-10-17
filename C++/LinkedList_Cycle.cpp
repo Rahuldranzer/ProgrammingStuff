@@ -125,8 +125,20 @@ class linked_list
         if((fast == NULL) || (fast -> next == NULL))
                 cout<<" Cycle does not exist "<<endl;
         else
-                cout<<"Cycle exists "<<endl;
+        {
+            cout<<"Cycle exists "<<endl;
             
+            node *finder = head;                                                          //m = nodes outside the cycle, r = nodes in the cycle
+                                                                                          //l = nodes between ith and the convergent node            
+            while( finder != slow)                                                        //iterator 1 and iterator 2 running 
+            {                                                                             //from head and ith node, converging to the node
+                finder = finder -> next;                                                  //where the cycle starts : l + m = r
+                slow = slow -> next;                                                                                                           
+            }                                                                                                                                   
+                                           
+            if( finder == slow)
+                cout<<"Cycle enters at "<<slow -> data <<" node"<<endl;                
+        }   
     }
     
     void display()
@@ -170,6 +182,6 @@ int main() {
 	
 	a.make_cycle();
 	a.detect_loop();
-
+	
 	return 0;
 }
