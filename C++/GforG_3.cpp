@@ -8,7 +8,7 @@ using namespace std;
 bool valid_char(char ch)
 {
     if(tolower(ch) >= 'a' && tolower(ch) <= 'z') return 1;
-    if( ch >= '0' && ch <= '9') return 1;
+    if( isdigit(ch)) return 1;
     return 0;
 }
 
